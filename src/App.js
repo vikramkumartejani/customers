@@ -112,7 +112,7 @@ function App() {
               </div>
               <div className=" mt-5 w-full h-[339px] lg:containerone pr-2 md:pr-3">
                 <table className="w-full">
-                  <tbody className=" divide-gray-200 flex flex-col gap-5">
+                  <tbody className=" divide-gray-200 flex flex-col gap-5 mb-4">
                     {filteredData.map((item, index) => (
                       <tr
                         key={index}
