@@ -92,7 +92,7 @@ body {
   }
 }
 
-/* customer tab and sidebar responsive */
+/* CUSTOM customer tab and sidebar responsive */
 @media screen and (max-width: 1766px) {
   .table-container {
     height: 435px;

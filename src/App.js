@@ -381,7 +381,7 @@ function App() {
                   letter === activeLetter
                     ? "bg-[#6100A2] text-white"
                     : "bg-[#65558F1A] text-[#262626]"
-                } rounded-xl text-[16px] leading-[30px] font-semibold flex items-center justify-center`}
+                } rounded-xl text-[16px] leading-[30px] font-semibold flex items-center justify-center cursor-pointer`}
                 onClick={() => handleFilterClick("letter", letter)}
               >
                 {letter}
@@ -401,7 +401,7 @@ function App() {
                   year === activeYear
                     ? "bg-[#6100A2] text-white"
                     : "bg-[#65558F1A] text-[#262626]"
-                } rounded-xl text-[16px] leading-[30px] font-semibold flex items-center justify-center`}
+                } rounded-xl text-[16px] leading-[30px] font-semibold flex items-center justify-center cursor-pointer`}
                 onClick={() => handleFilterClick("year", year)}
               >
                 {year}
@@ -421,7 +421,7 @@ function App() {
                   month === activeMonth
                     ? "bg-[#6100A2] text-white"
                     : "bg-[#65558F1A] text-[#262626]"
-                } rounded-xl text-[13px] leading-[30px] font-semibold flex items-center justify-center`}
+                } rounded-xl text-[13px] leading-[30px] font-semibold flex items-center justify-center cursor-pointer`}
                 onClick={() => handleFilterClick("month", month)}
               >
                 {month}
