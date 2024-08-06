@@ -209,10 +209,10 @@ function App() {
 
   return (
     <Layout>
-      <div className="customer-main flex-wrap flex items-start gap-5 w-full lg:h-full sm:px-0">
+      <div className="customer-main flex items-start gap-5 w-full lg:h-full sm:px-0">
         <div className="tables-and-map md:h-full max-w-[1195px] w-full mx-auto">
           <div className="flex-1 flex justify-start gap-7 xl:flex-row flex-col ">
-            <div className=" bg-white shadow-custom flex-1  rounded-[24px] p-3 py-4 sm:p-5 ">
+            <div className=" bg-white shadow-custom flex-1  rounded-[24px] p-3 py-4 sm:p-5  min-w-[300px]">
               <div className="flex items-center justify-between gap-3">
                 <h2 className="text-[#121212] md:text-[20px] text-[18px]  md:leading-[28px] leading-[20px] font-ibmplexsans font-semibold">
                   Names
@@ -232,7 +232,7 @@ function App() {
               </div>
 
               {/* Table */}
-              <div className="mt-5 w-full h-[339px] lg:containerone overflow-auto pr-2 md:pr-3 ">
+              <div className="mt-5 w-full table-container h-[339px] lg:containerone overflow-auto pr-2 md:pr-3 ">
                 <table className="w-full">
                   <tbody className="divide-gray-200 flex flex-col gap-5">
                     {filteredData.map((item, index) => (
@@ -373,7 +373,7 @@ function App() {
           <h2 className="text-[#121212] md:text-[20px] text-[18px] md:leading-[28px] font-semibold font-ibmplexsans pb-5">
             Filter By Letter
           </h2>
-          <div className="flex item gap-3">
+          <div className="flex flex-wrap item gap-3">
             {letters.map((letter, index) => (
               <div
                 key={index}
@@ -393,7 +393,7 @@ function App() {
           <h2 className="text-[#121212] md:text-[20px] text-[18px] md:leading-[28px] font-semibold font-ibmplexsans pb-5 pt-8">
             Filter By Year
           </h2>
-          <div className="flex item gap-3 flex-wrap">
+          <div className="flex flex-wrap item gap-3 flex-wrap">
             {years.map((year, index) => (
               <div
                 key={index}

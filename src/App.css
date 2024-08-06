@@ -93,9 +93,15 @@ body {
 }
 
 /* customer tab and sidebar responsive */
-@media screen and (max-width: 1892px) {
+@media screen and (max-width: 1766px) {
+  .table-container {
+    height: 435px;
+  }
+}
+@media screen and (max-width: 1375px) {
   .customer-main {
     align-items: center;
+    flex-direction: column;
   }
   .filter-container {
     max-width: 1200px !important;
@@ -108,7 +114,13 @@ body {
   }
 }
 
-@media screen and (max-width: 1891px) {
+@media screen and (max-width: 1279px) {
+  .table-container {
+    height: 339px;
+  }
+}
+
+@media screen and (max-width: 1375px) {
   .filter-container {
     height: fit-content !important;
   }
