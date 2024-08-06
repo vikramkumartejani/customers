@@ -67,7 +67,6 @@ body {
   padding: 50px;
   border-radius: 10px;
   background-color: #ede9fe8c;
-  
 }
 
 ::-webkit-scrollbar-thumb {
@@ -90,5 +89,40 @@ body {
   }
   ::-webkit-scrollbar {
     width: 8px;
+  }
+}
+
+/* customer tab and sidebar responsive */
+@media screen and (max-width: 1892px) {
+  .customer-main {
+    align-items: center;
+  }
+  .filter-container {
+    max-width: 1200px !important;
+    order: 1;
+  }
+  .tables-and-map {
+    order: 2;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 439px) {
+  .main-container {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1106px) {
+  .sidebar {
+    max-width: fit-content;
+  }
+  .filter-container {
+    order: 1;
+    width: 100% !important;
+  }
+  .tables-and-map {
+    order: 2;
+  }
+  .customer-main {
+    flex-direction: column;
   }
 }
