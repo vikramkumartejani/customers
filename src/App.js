@@ -68,20 +68,7 @@ function App() {
 
   // Search functionality
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [filteredData, setFilteredData] = useState(tableData); // Added this state
-  const rowsPerPage = 5;
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  const paginatedData = filteredData.slice(
-    (currentPage - 1) * rowsPerPage,
-    currentPage * rowsPerPage
-  );
-
-  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+  const [filteredData, setFilteredData] = useState(tableData);
 
   const handleSearch = (e) => {
     const query = e.target.value;
@@ -105,7 +92,7 @@ function App() {
       <div className="customer-main flex-wrap flex items-start gap-5 w-full lg:h-full sm:px-0">
         <div className="tables-and-map md:h-fit max-w-[1195px] w-full mx-auto">
           <div className="flex-1 flex justify-start gap-7 xl:flex-row flex-col">
-            <div className="bg-white shadow-custom flex-1 overflow-auto rounded-[24px] p-3 py-4 sm:p-5 relative">
+            <div className=" bg-white shadow-custom flex-1 overflow-auto rounded-[24px] p-3 py-4 sm:p-5">
               <div className="flex items-center justify-between gap-3">
                 <h2 className="text-[#121212] md:text-[24px] text-[20px] leading-[31px] font-ibmplexsans font-semibold">
                   Names
@@ -123,16 +110,16 @@ function App() {
                   />
                 </div>
               </div>
-              <div className="mt-5 w-full h-fit lg:containerone pr-2 md:pr-3">
+              <div className=" mt-5 w-full h-[339px] lg:containerone pr-2 md:pr-3">
                 <table className="w-full">
-                  <tbody className="divide-gray-200 flex flex-col gap-5 mb-6">
-                    {paginatedData.map((item, index) => (
+                  <tbody className=" divide-gray-200 flex flex-col gap-5 mb-6">
+                    {filteredData.map((item, index) => (
                       <tr
                         key={index}
                         className={`flex items-center justify-between gap-5 rounded-[10px] h-[51px] ${
                           index === 1
                             ? "bg-[#6100A2] text-white"
-                            : "bg-[#EDE9FE] text-[#49454F]"
+                            : "bg-[#EDE9FE] text-[#49454F] "
                         }`}
                       >
                         <h2 className="px-3 md:px-6 whitespace-nowrap md:text-[18px] text-[14px] md:leading-[19px] font-normal">
@@ -153,69 +140,6 @@ function App() {
                     ))}
                   </tbody>
                 </table>
-              </div>
-              <div className="absolute bottom-3 right-4 flex justify-center mt-4">
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  className="text-[#6100A2] disabled:text-gray-400"
-                >
-                  <span>
-                    <svg
-                      width="23"
-                      height="23"
-                      viewBox="0 0 23 23"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M14.1025 18.6659L7.99302 12.5564C7.2715 11.8348 7.2715 10.6542 7.99302 9.93264L14.1025 3.82312"
-                        stroke="#6100A2"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </button>
-                {[...Array(totalPages).keys()].map((page) => (
-                  <button
-                    key={page}
-                    onClick={() => handlePageChange(page + 1)}
-                    className={`mx-1 ${
-                      currentPage === page + 1
-                        ? "text-[#6100A2]"
-                        : "text-gray-400"
-                    }`}
-                  >
-                    {page + 1}
-                  </button>
-                ))}
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                  className="text-[#6100A2] disabled:text-gray-400"
-                >
-                  <span>
-                    <svg
-                      width="23"
-                      height="23"
-                      viewBox="0 0 23 23"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8.38672 3.82314L14.4962 9.93266C15.2178 10.6542 15.2178 11.8349 14.4962 12.5564L8.38672 18.6659"
-                        stroke="#6100A2"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </button>
               </div>
             </div>
 
