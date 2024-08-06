@@ -188,7 +188,7 @@ function App() {
                   Month: August
                 </h2>
                 <div className="mt-3.5 flex items-center flex-wrap justify-between gap-4">
-                  <div className="bg-[#65558F1A] w-fit md:h-[63px] h-fit pt-0.5 rounded-xl text-center">
+                  <div className="bg-[#65558F1A] sm:w-fit w-full md:h-[63px] h-fit pt-0.5 rounded-xl text-center px-[10px]">
                     <h3 className="text-[#65558F] md:text-[14px] text-[12px] md:leading-[30px] leading-[25px] font-semibold">
                       Water Consumed
                     </h3>
@@ -196,7 +196,7 @@ function App() {
                       1.00
                     </h2>
                   </div>
-                  <div className="bg-[#65558F1A] w-fit md:h-[63px] h-fit pt-0.5 rounded-xl text-center">
+                  <div className="bg-[#65558F1A] sm:w-fit w-full md:h-[63px] h-fit pt-0.5 rounded-xl text-center px-[10px]">
                     <h3 className="text-[#65558F] md:text-[14px] text-[12px] md:leading-[30px] leading-[25px] font-semibold">
                       Invoice
                     </h3>
@@ -204,7 +204,7 @@ function App() {
                       1.50
                     </h2>
                   </div>
-                  <div className="bg-[#65558F1A] w-fit md:h-[63px] h-fit pt-0.5 rounded-xl text-center">
+                  <div className="bg-[#65558F1A] sm:w-fit w-full md:h-[63px] h-fit pt-0.5 rounded-xl text-center px-[10px]">
                     <h3 className="text-[#65558F] md:text-[14px] text-[12px] md:leading-[30px] leading-[25px] font-semibold">
                       Receipt
                     </h3>
@@ -212,7 +212,7 @@ function App() {
                       1.00
                     </h2>
                   </div>
-                  <div className="bg-[#65558F1A] w-fit md:h-[63px] h-fit pt-0.5 rounded-xl text-center">
+                  <div className="bg-[#65558F1A] sm:w-fit w-full md:h-[63px] h-fit pt-0.5 rounded-xl text-center px-[10px]">
                     <h3 className="text-[#65558F] md:text-[14px] text-[12px] md:leading-[30px] leading-[25px] font-semibold">
                       Balance
                     </h3>
