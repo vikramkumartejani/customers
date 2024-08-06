@@ -12,7 +12,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="sidebar text-[#12121299] sticky top-0 min-h-full bg-white md:w-full min-w-fit w-fit lg:max-w-[319px] md:w-[250px] max-w-auto min-h-screen flex flex-col rounded-[24px] px-3 xl:px-8 md:px-6 pt-8">
+    <div className="sidebar text-[#12121299] sticky top-0 min-h-full bg-white min-w-fit w-fit lg:max-w-[319px] md:w-[250px] max-w-auto   flex flex-col rounded-[24px] px-3 xl:px-8 md:px-6 pt-8">
       <h3 className="text-[#121212] text-[14px] leading-[18.2px] font-medium font-ibmplexsans">
         Menu
       </h3>
@@ -58,3 +58,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
