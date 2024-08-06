@@ -252,7 +252,7 @@ function App() {
           <h2 className="text-[#121212] md:text-[22px] text-[18px] md:leading-[28.6px] font-semibold font-ibmplexsans pb-5">
             Filter By Year
           </h2>
-          <div className="flex item md:justify-between gap-3">
+          <div className="flex item gap-3">
             {letters.map((letter, index) => (
               <div
                 key={index}
@@ -270,7 +270,7 @@ function App() {
           <h2 className="text-[#121212] md:text-[22px] text-[18px] md:leading-[28.6px] font-semibold font-ibmplexsans pb-5 pt-8">
             Filter By Year
           </h2>
-          <div className="flex item md:justify-between gap-3 flex-wrap">
+          <div className="flex item gap-3 flex-wrap">
             {years.map((year, index) => (
               <div
                 key={index}
@@ -288,7 +288,7 @@ function App() {
           <h2 className="text-[#121212] md:text-[22px] text-[18px] md:leading-[28.6px] font-semibold font-ibmplexsans pb-5 py-8">
             Filter By Month
           </h2>
-          <div className="flex item justify-between gap-3 flex-wrap">
+          <div className="flex item  gap-3 flex-wrap">
             {months.map((month, index) => (
               <div
                 key={index}
