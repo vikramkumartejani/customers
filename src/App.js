@@ -112,7 +112,7 @@ function App() {
               </div>
               <div className=" mt-5 w-full h-[339px] lg:containerone pr-2 md:pr-3">
                 <table className="w-full">
-                  <tbody className=" divide-gray-200 flex flex-col gap-5 mb-4">
+                  <tbody className=" divide-gray-200 flex flex-col gap-5 mb-6">
                     {filteredData.map((item, index) => (
                       <tr
                         key={index}
@@ -248,7 +248,7 @@ function App() {
         </div>
 
         {/* Filter By Year */}
-        <div className="filter-container bg-white w-full lg:max-w-[338px] max-w-full rounded-[24px] md:h-fit p-5">
+        <div className="filter-container bg-white w-full lg:max-w-[338px] xl:h-full max-w-full rounded-[24px] md:h-fit p-5">
           <h2 className="text-[#121212] md:text-[22px] text-[18px] md:leading-[28.6px] font-semibold font-ibmplexsans pb-5">
             Filter By Year
           </h2>
