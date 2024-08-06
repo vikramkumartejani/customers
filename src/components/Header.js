@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <header className="flex items-center justify-between w-full bg-white px-3 sm:px-10 pt-4 pb-4">
-      <div className="md:p-4 p-1">
+      <div className="md:px-4 px-1">
         <h1 className="text-xl sm:text-3xl text-[#121212] font-semibold uppercase">
           Ceelcadde
         </h1>
