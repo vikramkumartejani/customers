@@ -234,7 +234,7 @@ function App() {
               {/* Table */}
               <div className="mt-5 w-full h-[339px] lg:containerone overflow-auto pr-2 md:pr-3 ">
                 <table className="w-full">
-                  <tbody className="divide-gray-200 flex flex-col gap-5 mb-6">
+                  <tbody className="divide-gray-200 flex flex-col gap-3">
                     {filteredData.map((item, index) => (
                       <tr
                         key={index}
