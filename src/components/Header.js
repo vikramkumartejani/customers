@@ -36,7 +36,7 @@ const Header = () => {
         onClick={handleDropdownToggle}
         ref={dropdownRef}
       >
-        <img src={Profile} alt="Profile" />
+        <img width={40} src={Profile} alt="Profile" />
         <div className="md:ml-3 ml-2">
           <p className="text-[#121212] text-sm font-medium">Alex Elvish</p>
           <p className="text-[#12121299] text-sm">Admin</p>
