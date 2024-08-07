@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Profile from "../assets/profile.svg";
 import Arrow from "../assets/arrow-down.svg";
 import Logout from "../assets/logout.svg";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -27,12 +28,14 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between w-full bg-white px-3 sm:px-10 pt-4 pb-4">
       <div className="md:px-4 px-1">
-        <h1 className="text-xl sm:text-3xl text-[#121212] font-semibold uppercase">
-          Ceelcadde
-        </h1>
+        <NavLink to="/dashboard">
+          <h1 className="text-xl sm:text-3xl text-[#121212] font-semibold uppercase">
+            Ceelcadde
+          </h1>
+        </NavLink>
       </div>
       <div
-        className="relative profile-dropdown flex items-center pe-2"
+        className="relative profile-dropdown flex items-center pe-2 cursor-pointer"
         onClick={handleDropdownToggle}
         ref={dropdownRef}
       >

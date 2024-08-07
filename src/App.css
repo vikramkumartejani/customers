@@ -16,6 +16,19 @@ body {
   background-color: #ede9fe;
 }
 
+.filter-none {
+  filter: none;
+}
+
+.filter-grayscale {
+  filter: grayscale(100%);
+}
+
+.filter-active {
+  filter: invert(35%) sepia(92%) saturate(2002%) hue-rotate(240deg)
+    brightness(85%) contrast(68%);
+}
+
 /* MapComponent.css */
 .custom-popup .leaflet-popup-content-wrapper {
   background-color: #fff;
