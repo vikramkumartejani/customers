@@ -8,6 +8,8 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import DetailsModal from "./components/DetailsModal";
+import MonthModal from "./components/MonthModal";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
@@ -19,19 +21,26 @@ let DefaultIcon = L.icon({
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
-function App() {
+
+const initialDetails = {
+  Name: 'Test Name',
+  Zone: 'A',
+  'House No': '20',
+  Telephone: '+44 4587 41952',
+  Rate: '1.5',
+  Discount: '0.75',
+};
+
+const initialMonthData = {
+  'Water Consumed': '1.00',
+  Invoice: '1.50',
+  Receipt: '1.00',
+  Balance: '-0.50',
+};
+
+function App({ detailsDataProp = initialDetails }) {
   // Map
   const position = [38.9072, -77.0369]; // Coordinates for Washington, DC
-
-  // Details
-  const detailsData = [
-    { label: "Name:", value: "Test Name" },
-    { label: "Zone:", value: "A" },
-    { label: "House No:", value: "20" },
-    { label: "Telephone:", value: "+44 4587 41952" },
-    { label: "Rate:", value: "1.5" },
-    { label: "Discount:", value: "0.75" },
-  ];
 
   const letters = ["A", "B", "C"];
   const years = ["2024", "2023", "2022", "2021"];
@@ -207,6 +216,24 @@ function App() {
     }
   };
 
+
+  // Modal
+  const [isDetailsModalOpen, setDetailsModalOpen] = useState(false);
+  const [isMonthModalOpen, setMonthModalOpen] = useState(false);
+  const [details, setDetails] = useState(detailsDataProp);
+  const [monthData, setMonthData] = useState(initialMonthData);
+
+  const toggleDetailsModal = () => setDetailsModalOpen(!isDetailsModalOpen);
+  const toggleMonthModal = () => setMonthModalOpen(!isMonthModalOpen);
+
+  const handleSaveDetails = (updatedDetails) => {
+    setDetails(updatedDetails);
+  };
+
+  const handleSaveMonthData = (updatedMonthData) => {
+    setMonthData(updatedMonthData);
+  };
+
   return (
     <Layout>
       <div className="customer-main flex items-start gap-5 w-full lg:h-full sm:px-0">
@@ -239,11 +266,10 @@ function App() {
                       <tr
                         key={index}
                         onClick={() => handleRowClick(index)}
-                        className={`flex items-center justify-between gap-5 rounded-[10px] h-[51px] cursor-pointer ${
-                          selectedRowIndex === index
-                            ? "bg-[#6100A2] text-white"
-                            : "bg-[#EDE9FE] text-[#49454F]"
-                        } hover:bg-[#6100A2] hover:text-white`}
+                        className={`flex items-center justify-between gap-5 rounded-[10px] h-[51px] cursor-pointer ${selectedRowIndex === index
+                          ? "bg-[#6100A2] text-white"
+                          : "bg-[#EDE9FE] text-[#49454F]"
+                          } hover:bg-[#6100A2] hover:text-white`}
                       >
                         <td className="px-3 md:px-6 whitespace-nowrap md:text-[16px] text-[14px] md:leading-[16px] font-normal">
                           {item.name}
@@ -271,23 +297,25 @@ function App() {
                 <h3 className="text-[#121212] md:text-[20px] text-[18px] md:leading-[28px] leading-[25px] font-ibmplexsans font-semibold mb-3">
                   Details
                 </h3>
-                <div className="bg-white rounded-[20px] px-4  sm:px-[30px] py-5">
-                  <div className="flex flex-wrap items-center w-full justify-end gap-3">
-                    <h4 className="text-[#121212] text-[14px] font-medium font-ibmplexsans leading-[18.2px]">
-                      Edit
-                    </h4>
-                    <button>
-                      <img src={Edit} alt="Edit" width={15} height={15} />
-                    </button>
+                <div className="bg-white rounded-[20px] px-4 sm:px-[30px] py-5">
+                  <div className="flex items-end justify-end">
+                    <div onClick={toggleDetailsModal} className="flex w-[100px] cursor-pointer relative z-10 flex-wrap items-center justify-end gap-3">
+                      <h4 className="text-[#121212] text-[14px] font-medium font-ibmplexsans leading-[18.2px]">
+                        Edit
+                      </h4>
+                      <button>
+                        <img src={Edit} alt="Edit" width={15} height={15} />
+                      </button>
+                    </div>
                   </div>
                   <div className="mt-[-14px] flex flex-col gap-5">
-                    {detailsData.map((detail, index) => (
+                    {Object.keys(details).map((key, index) => (
                       <div key={index} className="flex items-center gap-2">
                         <h2 className="text-[#202020] md:text-[17px] sm:text-[15px] text-[16px] md:leading-[19px] sm:leading-[16px] leading-[14px] font-medium">
-                          {detail.label}
+                          {key}:
                         </h2>
                         <h4 className="text-[#202020] md:text-[17px] sm:text-[15px] text-[16px] md:leading-[19px] sm:leading-[16px] leading-[14px] text-nowrap font-normal">
-                          {detail.value}
+                          {details[key]}
                         </h4>
                       </div>
                     ))}
@@ -296,53 +324,52 @@ function App() {
               </div>
 
               {/* Month */}
-              <div className="bg-white rounded-[20px] sm:w-auto w-full px-4 sm:px-[30px] py-5">
+              <div className="bg-white rounded-[20px] sm:w-auto w-full px-4 sm:px-[20px] py-5">
                 <div className="flex items-center w-full justify-end gap-3">
                   <h4 className="text-[#121212] text-[14px] font-medium font-ibmplexsans leading-[18.2px]">
                     Edit
                   </h4>
-                  <button>
+                  <button onClick={toggleMonthModal}>
                     <img src={Edit} alt="Edit" width={15} height={15} />
                   </button>
                 </div>
                 <h2 className="text-[#121212] md:text-[20px] text-[18px] md:leading-[26px] leading-[20px] font-semibold font-ibmplexsans mt-[-14px]">
                   Month: August
                 </h2>
-                <div className="mt-3.5 flex items-center flex-wrap justify-between gap-3">
-                  <div className="bg-[#65558F1A] sm:w-[154px] w-full md:h-[63px] h-fit pt-0.5 rounded-xl text-center px-[10px]">
-                    <h3 className="text-[#65558F] md:text-[14px] text-[12px] md:leading-[30px] leading-[25px] font-semibold">
-                      Water Consumed
-                    </h3>
-                    <h2 className="text-[#262626] md:text-[16px] text-[15px] md:leading-[30px] leading-[25px] font-semibold">
-                      1.00
-                    </h2>
-                  </div>
-                  <div className="bg-[#65558F1A] sm:w-[95px] w-full md:h-[63px] h-fit pt-0.5 rounded-xl text-center px-[10px]">
-                    <h3 className="text-[#65558F] md:text-[14px] text-[12px] md:leading-[30px] leading-[25px] font-semibold">
-                      Invoice
-                    </h3>
-                    <h2 className="text-[#262626] md:text-[16px] text-[15px] md:leading-[30px] leading-[25px] font-semibold">
-                      1.50
-                    </h2>
-                  </div>
-                  <div className="bg-[#65558F1A] sm:w-[95px] w-full md:h-[63px] h-fit pt-0.5 rounded-xl text-center px-[10px]">
-                    <h3 className="text-[#65558F] md:text-[14px] text-[12px] md:leading-[30px] leading-[25px] font-semibold">
-                      Receipt
-                    </h3>
-                    <h2 className="text-[#262626] md:text-[16px] text-[15px] md:leading-[30px] leading-[25px] font-semibold">
-                      1.00
-                    </h2>
-                  </div>
-                  <div className="bg-[#65558F1A] sm:w-[95px] w-full md:h-[63px] h-fit pt-0.5 rounded-xl text-center px-[10px]">
-                    <h3 className="text-[#65558F] md:text-[14px] text-[12px] md:leading-[30px] leading-[25px] font-semibold">
-                      Balance
-                    </h3>
-                    <h2 className="text-[#262626] md:text-[16px] text-[15px] md:leading-[30px] leading-[25px] font-semibold">
-                      -0.50
-                    </h2>
-                  </div>
+                <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-3">
+                  {Object.keys(monthData).map((key, index) => (
+                    <div
+                      key={index}
+                      className="bg-[#65558F1A] md:h-[63px] h-fit pt-0.5 rounded-xl flex items-center justify-center flex-col text-center px-[10px]"
+                    >
+                      <h3 className="text-[#65558F] md:text-[14px] text-[12px] font-semibold">
+                        {key}
+                      </h3>
+                      <h2 className="text-[#262626] md:text-[16px] text-[15px] md:leading-[30px] leading-[25px] font-semibold">
+                        {monthData[key]}
+                      </h2>
+                    </div>
+                  ))}
                 </div>
               </div>
+
+              {/* Details Modal */}
+              {isDetailsModalOpen && (
+                <DetailsModal
+                  onClose={toggleDetailsModal}
+                  details={details}
+                  onSave={handleSaveDetails}
+                />
+              )}
+
+              {/* Month Modal */}
+              {isMonthModalOpen && (
+                <MonthModal
+                  onClose={toggleMonthModal}
+                  monthData={monthData}
+                  onSave={handleSaveMonthData}
+                />
+              )}
             </div>
           </div>
 
@@ -377,11 +404,10 @@ function App() {
             {letters.map((letter, index) => (
               <div
                 key={index}
-                className={`md:w-[86px] w-[48px] h-[48px] ${
-                  letter === activeLetter
-                    ? "bg-[#6100A2] text-white"
-                    : "bg-[#65558F1A] text-[#262626]"
-                } rounded-xl text-[16px] leading-[30px] font-semibold flex items-center justify-center cursor-pointer`}
+                className={`md:w-[86px] w-[48px] h-[48px] ${letter === activeLetter
+                  ? "bg-[#6100A2] text-white"
+                  : "bg-[#65558F1A] text-[#262626]"
+                  } rounded-xl text-[16px] leading-[30px] font-semibold flex items-center justify-center cursor-pointer`}
                 onClick={() => handleFilterClick("letter", letter)}
               >
                 {letter}
@@ -397,11 +423,10 @@ function App() {
             {years.map((year, index) => (
               <div
                 key={index}
-                className={`md:w-[86px] w-[70px] h-[48px] ${
-                  year === activeYear
-                    ? "bg-[#6100A2] text-white"
-                    : "bg-[#65558F1A] text-[#262626]"
-                } rounded-xl text-[16px] leading-[30px] font-semibold flex items-center justify-center cursor-pointer`}
+                className={`md:w-[86px] w-[70px] h-[48px] ${year === activeYear
+                  ? "bg-[#6100A2] text-white"
+                  : "bg-[#65558F1A] text-[#262626]"
+                  } rounded-xl text-[16px] leading-[30px] font-semibold flex items-center justify-center cursor-pointer`}
                 onClick={() => handleFilterClick("year", year)}
               >
                 {year}
@@ -417,11 +442,10 @@ function App() {
             {months.map((month, index) => (
               <div
                 key={index}
-                className={`w-[90px] h-[48px] ${
-                  month === activeMonth
-                    ? "bg-[#6100A2] text-white"
-                    : "bg-[#65558F1A] text-[#262626]"
-                } rounded-xl text-[13px] leading-[30px] font-semibold flex items-center justify-center cursor-pointer`}
+                className={`w-[90px] h-[48px] ${month === activeMonth
+                  ? "bg-[#6100A2] text-white"
+                  : "bg-[#65558F1A] text-[#262626]"
+                  } rounded-xl text-[13px] leading-[30px] font-semibold flex items-center justify-center cursor-pointer`}
                 onClick={() => handleFilterClick("month", month)}
               >
                 {month}

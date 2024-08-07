@@ -49,14 +49,14 @@ const Header = () => {
         {dropdownOpen && (
           <div className="absolute right-0 md:w-full w-[97%] top-full mt-2 w-48 bg-white border rounded-lg shadow-lg py-2 z-50">
             <a
-              href="#"
+              href="/"
               className="block px-4 py-2 text-gray-800 hover:bg-gray-200 md:text-[16px] text-[15px]"
             >
               Invite Users
             </a>
             <a
-              href="#"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200 flex gap-[6px] justify-between"
+              href="/"
+              className="px-4 py-2 text-gray-800 hover:bg-gray-200 flex gap-[6px] justify-between"
             >
               <h3 className="text-[#FB656A] md:text-[16px] text-[15px]">
                 <span>Logout</span>
